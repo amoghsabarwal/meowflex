@@ -1,50 +1,315 @@
+:root {
+  color-scheme: dark;
+  --bg-0: #030611;
+  --bg-1: #090f22;
+  --bg-2: #111b35;
+  --panel: rgba(9, 17, 33, 0.88);
+  --panel-solid: #0d1731;
+  --line: rgba(122, 163, 243, 0.28);
+  --line-strong: rgba(122, 163, 243, 0.48);
+  --text: #eaf2ff;
+  --muted: #9fb3d9;
+  --accent: #43e2ff;
+  --accent-2: #63f6be;
+  --danger: #ff697d;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  margin:0;
-  background:#050505;
-  color:#eaeaea;
-  font-family: Inter, system-ui;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background:
+    radial-gradient(circle at 18% -4%, #1b2f57 0%, transparent 33%),
+    radial-gradient(circle at 88% 12%, #1b3f63 0%, transparent 40%),
+    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 52%, #02040a 100%);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 18px;
 }
 
 .app {
-  padding:16px;
+  width: min(980px, 100%);
+  display: grid;
+  gap: 14px;
 }
 
 header {
-  font-size:14px;
-  letter-spacing:2px;
-  border-bottom:1px solid #222;
-  padding-bottom:8px;
-  margin-bottom:16px;
+  border: 1px solid var(--line);
+  background: linear-gradient(140deg, rgba(18, 35, 70, 0.95) 0%, rgba(9, 16, 33, 0.92) 75%);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: clamp(14px, 2.5vw, 22px);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 8px 0;
+  font-size: clamp(1.25rem, 2.7vw, 1.95rem);
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+}
+
+.subhead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  max-width: 62ch;
+}
+
+.progress-wrap {
+  margin-top: 12px;
+}
+
+.progress-wrap p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #0b1330;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #46c4ff 0%, #63f6be 100%);
+  transition: width 240ms ease;
+}
+
+.card,
+.game-screen {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  background: var(--panel);
+  backdrop-filter: blur(4px);
+  padding: clamp(14px, 2.4vw, 20px);
 }
 
 button {
-  width:100%;
-  padding:14px;
-  margin:6px 0;
-  background:#0d0d0d;
-  border:1px solid #222;
-  color:#fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  background: linear-gradient(160deg, #1a2b55 0%, #121f3f 100%);
+  padding: 12px 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 130ms ease, border-color 130ms ease, filter 130ms ease;
+}
+
+button:hover {
+  border-color: var(--line-strong);
+  filter: brightness(1.08);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.primary {
+  width: 100%;
+  background: linear-gradient(165deg, #1d69c4 0%, #194c94 55%, #153974 100%);
+}
+
+.menu-intro p,
+.menu-title,
+.stat-footnote,
+small {
+  color: var(--muted);
+}
+
+.menu-title {
+  margin: 16px 0 8px;
+}
+
+.drill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.drill-btn {
+  text-align: left;
+  display: grid;
+  gap: 2px;
+}
+
+.drill-btn span {
+  font-weight: 500;
+  font-size: 0.83rem;
 }
 
 .game-container {
-  height:60vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  min-height: 60vh;
 }
 
 .game-screen {
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  border:1px solid #222;
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  align-content: center;
+  gap: 6px;
 }
 
-.card {
-  border:1px solid #222;
-  padding:12px;
-  margin-top:10px;
+.game-screen p {
+  font-size: clamp(1.1rem, 3.6vw, 1.5rem);
+  margin: 4px 0;
+}
+
+.split-buttons {
+  width: min(420px, 100%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.peripheral-lane {
+  width: min(500px, 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  font-size: clamp(1.4rem, 5.3vw, 2.2rem);
+}
+
+.dot {
+  color: #4a6394;
+}
+
+.flash {
+  color: var(--accent-2);
+  text-shadow: 0 0 16px rgba(99, 246, 190, 0.75);
+}
+
+.center {
+  color: #ecf4ff;
+}
+
+.tracking-area {
+  position: relative;
+  width: min(540px, 100%);
+  height: clamp(230px, 42vh, 380px);
+  border: 1px solid var(--line-strong);
+  border-radius: 13px;
+  background: linear-gradient(180deg, #091327 0%, #0c1a35 100%);
+  overflow: hidden;
+}
+
+.target {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: radial-gradient(circle, #b8ecff 0%, var(--accent) 70%);
+  box-shadow: 0 0 14px rgba(67, 226, 255, 0.8);
+}
+
+.stats-grid,
+.report-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stat-label,
+.report-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stat-value,
+.report-item strong {
+  margin: 4px 0 0;
+  font-size: 1.1rem;
+}
+
+.report {
+  display: grid;
+  gap: 12px;
+}
+
+.report-lede {
+  margin: 0;
+}
+
+.report-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.report-item {
+  border: 1px solid var(--line);
+  background: var(--panel-solid);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.report-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .report-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .drill-grid,
+  .split-buttons,
+  .report-actions,
+  .report-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-screen,
+  .game-container {
+    min-height: 66vh;
+  }
 }
