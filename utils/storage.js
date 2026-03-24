@@ -1,7 +1,16 @@
+const KEY = "scores";
+
 export function loadScores() {
-  return JSON.parse(localStorage.getItem("scores") || "[]");
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
 }
 
 export function saveScores(scores) {
-  localStorage.setItem("scores", JSON.stringify(scores));
+  localStorage.setItem(KEY, JSON.stringify(scores));
 }
