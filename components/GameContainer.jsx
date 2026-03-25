@@ -1,8 +1,8 @@
-import Reaction from "../games/reaction";
-import FalseStart from "../games/falseStart";
-import Choice from "../games/choice";
-import Peripheral from "../games/peripheral";
-import Tracking from "../games/tracking";
+import Reaction from "../games/reaction.jsx";
+import FalseStart from "../games/falseStart.jsx";
+import Choice from "../games/choice.jsx";
+import Peripheral from "../games/peripheral.jsx";
+import Tracking from "../games/tracking.jsx";
 
 const map = {
   reaction: Reaction,
